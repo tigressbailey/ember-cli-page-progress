@@ -3,7 +3,7 @@ import { get, set, setProperties } from '@ember/object';
 import { later } from '@ember/runloop';
 
 const TRICKLE_SPEED = 200;
-const SPEED = 400;
+const SPEED = 200;
 const MINIMUM = 0.08;
 const pendingEvents = [];
 const next = () => {
@@ -66,7 +66,7 @@ export default Service.extend({
         else { currentAmount = 0; }
       }
 
-      status = this.clamp(status + currentAmount, 0, 0.994);
+      status = this.clamp(status + currentAmount, 0, 0.998);
 
       return this.setStatus(status);
     }
@@ -83,23 +83,21 @@ export default Service.extend({
     setProperties(this, {
       status: currentStatus === 1 ? undefined : currentStatus,
       progressStyle: 'opacity: 1; transition: none;',
-      barStyle: `transition: width 0.15s ease; width: ${started ? '0' : this.toBarPerc(get(this, 'status'))}%;`
+      barStyle: `transition: width 0.2s linear; width: ${started ? '0' : this.toBarPerc(get(this, 'status'))}%;`
     });
 
     queue((next) => {
       if (currentStatus === 1) {
-        // later(() => {
         set(this, 'progressStyle', undefined);
 
         later(() => {
-          set(this, 'barStyle', 'transition: width 0.25s ease; width: 100%;');
+          set(this, 'barStyle', 'transition: width 0.2s linear; width: 100%;');
 
           later(() => {
             this.remove();
             next();
-          }, SPEED);
+          }, 500);
         }, SPEED);
-        // }, SPEED);
       } else {
         later(next, SPEED);
       }
@@ -121,7 +119,7 @@ export default Service.extend({
       return;
     }
 
-    this.trickle(0.5 + 0.5 * Math.random());
+    this.trickle(0.3 + 0.5 * Math.random());
     this.setStatus(1);
   },
 
