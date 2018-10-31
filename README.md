@@ -3,6 +3,8 @@ ember-cli-page-progress
 
 A handy transition indicator wrote without the jQuery dependency.
 
+[Demo site](https://tigressbailey.github.io/ember-cli-page-progress/)
+
 ## Installation
 ------------------------------------------------------------------------------
 
