@@ -1,23 +1,39 @@
-my-addon
+ember-cli-page-progress
 ==============================================================================
 
-[Short description of the addon.]
+A handy transition indicator wrote without the jQuery dependency.
 
-Installation
+## Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install my-addon
+ember install ember-cli-page-progress
 ```
 
 
-Usage
+## Usage
 ------------------------------------------------------------------------------
 
-[Longer description of how to use the addon in apps.]
+2 steps can make this addon work:
+
+1. Add the component to `application.hbs`
+    ```
+    {{page-progress}}
+    ```
+
+2. Import progress mixin and extend it in the application route - `application.js`
+
+   ```
+   import ProgressMixin from './../mixins/progress';
+
+   export default Ember.Route.extend(ProgressMixin, {...});
+   ```
 
 
-Contributing
+That's it. The page progress bar will display when transitions happens among the routes.
+
+
+## Contributing
 ------------------------------------------------------------------------------
 
 ### Installation

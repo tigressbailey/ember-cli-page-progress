@@ -89,15 +89,18 @@ export default Service.extend({
     queue((next) => {
       if (currentStatus === 1) {
         set(this, 'progressStyle', undefined);
-
         later(() => {
-          set(this, 'barStyle', 'transition: width 0.2s linear; width: 100%;');
+          set(this, 'progressStyle', undefined);
 
           later(() => {
-            this.remove();
-            next();
-          }, 500);
-        }, SPEED);
+            set(this, 'barStyle', 'transition: width 0.2s linear; width: 100%;');
+
+            later(() => {
+              this.remove();
+              next();
+            }, SPEED * 3);
+          }, SPEED);
+        });
       } else {
         later(next, SPEED);
       }
