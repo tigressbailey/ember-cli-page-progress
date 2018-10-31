@@ -38,8 +38,8 @@ That's it. The page progress bar will display when transitions happens among the
 
 ### Installation
 
-* `git clone <repository-url>`
-* `cd my-addon`
+* `git clone https://github.com/tigressbailey/ember-cli-page-progress.git`
+* `cd ember-cli-page-progress`
 * `npm install`
 
 ### Linting
