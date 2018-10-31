@@ -61,7 +61,11 @@ That's it. The page progress bar will display when transitions happens among the
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
 
-License
+## Author
+------------------------------------------------------------------------------
+:tiger: [Bailey Zhang](https://tigressbailey.github.io)
+
+## License
 ------------------------------------------------------------------------------
 
 This project is licensed under the [MIT License](LICENSE.md).
