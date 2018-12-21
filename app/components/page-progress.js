@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { computed, get } from '@ember/object';
+import { computed, get, getProperties } from '@ember/object';
 import { htmlSafe } from '@ember/string';
 import layout from '../templates/components/page-progress';
 
@@ -12,7 +12,8 @@ export default Component.extend({
   init(...args) {
     this._super(...args);
 
-    get(this, 'pageProgress').setConfig(args[0].attrs);
+    const configs = getProperties(this, 'speed', 'minimum', 'background');
+    get(this, 'pageProgress').setConfig(configs);
   },
 
   barStyle: computed('pageProgress.barStyle', {
