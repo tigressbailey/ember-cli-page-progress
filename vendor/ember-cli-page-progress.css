@@ -4,8 +4,6 @@
   left: 0;
   z-index: 1031;
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s linear;
 }
 
 .page-progress .bar {
@@ -14,7 +12,6 @@
   left: 0;
   width: 0;
   height: 3px;
-  background: #29d;
   box-shadow: 0 0 10px rgba(0, 13, 41, 0.8);
   transition: none;
 }

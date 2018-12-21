@@ -1,10 +1,11 @@
 import Service from '@ember/service';
+import { inject as service } from '@ember/service';
 import { get, set, setProperties } from '@ember/object';
 import { later } from '@ember/runloop';
 
-const TRICKLE_SPEED = 200;
 const SPEED = 200;
 const MINIMUM = 0.08;
+const BACKGROUND = 'red';
 const pendingEvents = [];
 const next = () => {
   const pendingEvent = pendingEvents.shift();
@@ -19,19 +20,39 @@ const queue = (fn) => {
 };
 
 export default Service.extend({
-  progressStyle: undefined,
+  router: service(),
+  speed: undefined,
+  minimum: undefined,
   barStyle: undefined,
+  background: undefined,
   status: undefined,
   target: undefined,
-  isLoading: false,
+  isLoaded: false,
+
+  setConfig(config) {
+    const configKeys = Object.keys(config);
+
+    for (let i = 0; i < configKeys.length; i= i+ 1) {
+      const value = config[configKeys[i]];
+
+      if (typeof value !== 'undefined') {
+        set(this, configKeys[i], value);
+      }
+    }
+
+    set(this, 'isLoaded', true);
+  },
 
   start(target) {
+    if (!get(this, 'isLoaded')) {
+      return;
+    }
+
     if (!this.isStarted() || get(this, 'target') !== target) {
       this.setStatus(0);
       setProperties(this, {
         barStyle: 'transition: none; width: 0;',
-        target,
-        isLoading: true
+        target
       })
     }
 
@@ -39,6 +60,8 @@ export default Service.extend({
   },
 
   update() {
+    const speed = get(this, 'speed') || SPEED;
+
     later(() => {
       if (!this.isStarted()) {
         return;
@@ -46,7 +69,7 @@ export default Service.extend({
 
       this.trickle();
       this.update();
-    }, TRICKLE_SPEED);
+    }, speed);
   },
 
   trickle(amount) {
@@ -77,43 +100,30 @@ export default Service.extend({
   },
 
   setStatus(status) {
+    const speed = get(this, 'speed') || SPEED;
+    const minimum = get(this, 'minimum') || MINIMUM;
+    const background = get(this, 'background') || BACKGROUND;
     const started = !this.isStarted();
-    const currentStatus = this.clamp(status, MINIMUM, 1);
+    const currentStatus = this.clamp(status, minimum, 1);
 
     setProperties(this, {
       status: currentStatus === 1 ? undefined : currentStatus,
-      progressStyle: 'opacity: 1; transition: none;',
-      barStyle: `transition: width 0.2s linear; width: ${started ? '0' : this.toBarPerc(get(this, 'status'))}%;`
+      barStyle: `transition: width ${speed}ms linear;
+width: ${started ? '0' : this.toBarPerc(get(this, 'status'))}%;
+background: ${background}`
     });
 
     queue((next) => {
       if (currentStatus === 1) {
-        set(this, 'progressStyle', undefined);
-        later(() => {
-          set(this, 'progressStyle', undefined);
+          set(this, 'barStyle', `transition: width ${speed}ms linear; width: 100%; background: ${background}`);
 
           later(() => {
-            set(this, 'barStyle', 'transition: width 0.2s linear; width: 100%;');
-
-            later(() => {
-              this.remove();
-              next();
-            }, SPEED * 3);
-          }, SPEED);
-        });
+            set(this, 'barStyle', `transition: opacity ${speed * 2}ms linear; width: 100%; opacity: 0; background: ${background}`);
+            next();
+          }, speed);
       } else {
-        later(next, SPEED);
+        later(next, speed);
       }
-    });
-  },
-
-  remove() {
-    setProperties(this, {
-      progressStyle: undefined,
-      barStyle: 'transition: none; width: 0%;',
-      status: undefined,
-      target: undefined,
-      isLoading: false
     });
   },
 

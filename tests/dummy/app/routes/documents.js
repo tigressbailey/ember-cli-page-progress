@@ -7,7 +7,7 @@ export default Route.extend({
     return new RSVP.Promise(function (resolve) {
       later(function () {
         resolve({ msg: 'Hold Your Horses' });
-      }, 2000);
+      }, 1500);
     });
   }
 });

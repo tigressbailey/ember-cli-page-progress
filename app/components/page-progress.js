@@ -9,17 +9,11 @@ export default Component.extend({
   tagName: '',
   pageProgress: service(),
 
-  isLoading: computed('pageProgress.isLoading', {
-    get() {
-      return get(this, 'pageProgress.isLoading');
-    }
-  }).readOnly(),
+  init(...args) {
+    this._super(...args);
 
-  progressStyle: computed('pageProgress.progressStyle', {
-    get() {
-      return htmlSafe(get(this, 'pageProgress.progressStyle'));
-    }
-  }).readOnly(),
+    get(this, 'pageProgress').setConfig(args[0].attrs);
+  },
 
   barStyle: computed('pageProgress.barStyle', {
     get() {

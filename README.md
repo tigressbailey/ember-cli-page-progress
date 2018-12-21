@@ -35,6 +35,51 @@ ember install ember-cli-page-progress
 
 That's it. The page progress bar will display when transitions happens among the routes.
 
+## Configuration
+------------------------------------------------------------------------------
+
+I opened 3 variables in v1.1.0.
+
+1. speed
+   It represents the increasing speed of the progress bar.
+
+   Default value is 200 if you don't provide it.
+
+   Please provide value as milliseconds.
+
+   For example:
+
+   ```
+   {{page-progress speed=300}}
+   ```
+
+2. minimum:
+   It represents the bar width at the start point.
+
+   Default value is 0.08 if you don't provide it.
+
+   Please provide value as float.
+
+   For example:
+   ```
+   {{page-progress minimum=0.1}}
+   ```
+
+2. background:
+   It represents the bar background color
+
+   Default value is 0.08 if you don't provide it.
+
+   Please provide value as string.
+
+   For example:
+   ```
+   {{page-progress background='green'}}
+   ```
+   or
+   ```
+   {{page-progress background='#29d'}}
+   ```
 
 ## Contributing
 ------------------------------------------------------------------------------
