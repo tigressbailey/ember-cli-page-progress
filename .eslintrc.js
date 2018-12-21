@@ -12,7 +12,9 @@ module.exports = {
     'plugin:ember/recommended'
   ],
   env: {
-    browser: true
+    "browser": true,
+    "amd": true,
+    "node": true
   },
   rules: {
   },
