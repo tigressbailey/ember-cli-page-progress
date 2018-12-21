@@ -74,11 +74,11 @@ I opened 3 variables in v1.1.0.
 
    For example:
    ```
-   {{page-progress background='green'}}
+   {{page-progress background="green"}}
    ```
    or
    ```
-   {{page-progress background='#29d'}}
+   {{page-progress background="#29d"}}
    ```
 
 ## Contributing
