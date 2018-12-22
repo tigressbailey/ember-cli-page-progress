@@ -70,7 +70,7 @@ I opened 3 variables in v1.1.0.
 
 2. background:
 
-   It represents the bar background color
+   It represents the bar background color.
 
    Default value is red if you don't provide it.
 
