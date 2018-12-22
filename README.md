@@ -41,7 +41,8 @@ That's it. The page progress bar will display when transitions happens among the
 
 I opened 3 variables in v1.1.0.
 
-1. speed
+1. speed:
+
    It represents the increasing speed of the progress bar.
 
    Default value is 200 if you don't provide it.
@@ -55,6 +56,7 @@ I opened 3 variables in v1.1.0.
    ```
 
 2. minimum:
+
    It represents the bar width at the start point.
 
    Default value is 0.08 if you don't provide it.
@@ -67,9 +69,10 @@ I opened 3 variables in v1.1.0.
    ```
 
 2. background:
+
    It represents the bar background color
 
-   Default value is 0.08 if you don't provide it.
+   Default value is red if you don't provide it.
 
    Please provide value as string.
 
