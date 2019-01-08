@@ -2,6 +2,7 @@ ember-cli-page-progress
 ==============================================================================
 [![npm version](https://badge.fury.io/js/ember-cli-page-progress.svg)](https://badge.fury.io/js/ember-cli-page-progress) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.com/tigressbailey/ember-cli-page-progress.svg?branch=master)](https://travis-ci.com/tigressbailey/ember-cli-page-progress)
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-page-progress.svg)](https://emberobserver.com/addons/ember-cli-page-progress)
 
 A handy transition indicator wrote without the jQuery dependency.
 
