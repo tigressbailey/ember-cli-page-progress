@@ -42,7 +42,7 @@ That's it. The page progress bar will display when transitions happens among the
 
 I opened 3 variables in v1.1.0.
 
-1. speed:
+1. Speed:
 
    It represents the increasing speed of the progress bar.
 
@@ -56,7 +56,7 @@ I opened 3 variables in v1.1.0.
    {{page-progress speed=300}}
    ```
 
-2. minimum:
+2. Minimum:
 
    It represents the bar width at the start point.
 
@@ -69,7 +69,7 @@ I opened 3 variables in v1.1.0.
    {{page-progress minimum=0.1}}
    ```
 
-2. background:
+2. Background:
 
    It represents the bar background color.
 
@@ -84,7 +84,19 @@ I opened 3 variables in v1.1.0.
    or
    ```
    {{page-progress background="#29d"}}
-   ```
+  ```
+3. Global Configuration 
+  
+  If would like to exclude the included css file, include the folling to your `ember-cli-build.js` file: 
+
+  ```js
+  let app = new EmberApp(defaults, {
+      'ember-cli-page-progress': {
+        includeCss: false
+      }
+    }
+  });
+  ```
 
 ## Contributing
 ------------------------------------------------------------------------------
