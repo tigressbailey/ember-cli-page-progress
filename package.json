@@ -26,6 +26,7 @@
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
+    "release": "np",
     "deploy": "ember build -prod && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages"
   },
   "dependencies": {
@@ -56,6 +57,7 @@
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-node": "^7.0.1",
     "loader.js": "^4.7.0",
+    "np": "^4.0.2",
     "qunit-dom": "^0.8.0"
   },
   "engines": {
