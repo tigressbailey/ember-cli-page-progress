@@ -63,8 +63,6 @@ ember install ember-cli-page-progress
    }
    ```
 
-That's it. The page progress bar will display when transitions happens among the routes.
-
 ------------------------------------------------------------------------------
 
 ## 🏁 ==== Guide for v1.3.3 ====
@@ -95,8 +93,6 @@ ember install ember-cli-page-progress@~1.3.3
    export default Ember.Route.extend(ProgressMixin, {...});
    ```
 
-
-That's it. The page progress bar will display when transitions happens among the routes.
 ------------------------------------------------------------------------------
 
 ## Configuration
