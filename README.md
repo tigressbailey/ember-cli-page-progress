@@ -8,7 +8,22 @@ A handy transition indicator wrote without the jQuery dependency.
 
 [Demo site](https://tigressbailey.github.io/ember-cli-page-progress/)
 
-## Installation
+
+## 🎉 This addon supports Ember 3 now.
+
+  - Please read the upgrade guide if you try to use the v2.0.0 version on Ember 3.
+  - Please install v1.3.3 and read the v1.3.3 guide on Ember 2.
+
+## 🏁 ==== Guide for v2.0.0 ====
+
+### Prerequisites
+------------------------------------------------------------------------------
+
+- Ember.js v3.12 or above
+- Ember CLI v2.13 or above
+- Node.js v10 or above
+
+### Installation
 ------------------------------------------------------------------------------
 
 ```
@@ -16,7 +31,53 @@ ember install ember-cli-page-progress
 ```
 
 
-## Usage
+### Usage
+------------------------------------------------------------------------------
+
+2 steps can make this addon work:
+
+1. Add the component to `application.hbs`
+    ```
+    <PageProgress />
+    ```
+
+2. Import page progress service and add the loading in the application route - `application.js`
+   Comparing to v1.3.3, the Mixin is not formally recommended.
+
+   ```
+   import { inject as service } from '@ember/service';
+   import Route from '@ember/routing/route';
+   import { action, get } from '@ember/object';
+
+   export default class Application extends Route {
+     @service pageProgress;
+     @action
+     async loading(transition) {
+       const pageProgress = get(this, 'pageProgress');
+       pageProgress.start(transition.targetName);
+       transition.promise.finally(() => {
+         pageProgress.done();
+       });
+       return true;
+     }
+   }
+   ```
+
+That's it. The page progress bar will display when transitions happens among the routes.
+
+------------------------------------------------------------------------------
+
+## 🏁 ==== Guide for v1.3.3 ====
+
+### Installation
+------------------------------------------------------------------------------
+
+```
+ember install ember-cli-page-progress@~1.3.3
+```
+
+
+### Usage
 ------------------------------------------------------------------------------
 
 2 steps can make this addon work:
@@ -36,6 +97,7 @@ ember install ember-cli-page-progress
 
 
 That's it. The page progress bar will display when transitions happens among the routes.
+------------------------------------------------------------------------------
 
 ## Configuration
 ------------------------------------------------------------------------------
@@ -50,6 +112,12 @@ That's it. The page progress bar will display when transitions happens among the
 
    For example:
 
+   v2.0.0
+   ```
+   <PageProgress @speed={{300}} />
+   ```
+
+   v1.3.3
    ```
    {{page-progress speed=300}}
    ```
@@ -63,6 +131,13 @@ That's it. The page progress bar will display when transitions happens among the
    Please provide value as float.
 
    For example:
+
+   v2.0.0
+   ```
+   <PageProgress @minimum={{0.1}} />
+   ```
+
+   v1.3.3
    ```
    {{page-progress minimum=0.1}}
    ```
@@ -76,6 +151,16 @@ That's it. The page progress bar will display when transitions happens among the
    Please provide value as string.
 
    For example:
+   v2.0.0
+   ```
+   <PageProgress @background={{"green"}} />
+   ```
+   or
+   ```
+   <PageProgress @background={{"#29d"}} />
+   ```
+
+   v1.3.3
    ```
    {{page-progress background="green"}}
    ```

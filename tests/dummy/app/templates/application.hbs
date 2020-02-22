@@ -1,11 +1,11 @@
-{{page-progress speed=200 minimum=0.1 background="green"}}
+<PageProgress @speed={{200}} @minimum={{0.1}} @background={{"green"}} />
 
 <h1>Page progress demo</h1>
 
 <h5>Click below links and see the transition effect at the top of the app.</h5>
 
 <ul>
-  <li>{{link-to "Introduction" "introduction"}}</li>
-  <li>{{link-to "Documents" "documents"}}</li>
-  <li>{{link-to "Profile" "profile"}}</li>
+  <li><LinkTo @route={{"introduction"}}>Introduction</LinkTo></li>
+  <li><LinkTo @route={{"documents"}}>Documents</LinkTo></li>
+  <li><LinkTo @route={{"profile"}}>Profile</LinkTo></li>
 </ul>
