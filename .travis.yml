@@ -11,8 +11,7 @@ addons:
   chrome: stable
 
 cache:
-  directories:
-    - $HOME/.npm
+  yarn: true
 
 env:
   global:
@@ -25,25 +24,21 @@ jobs:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
   include:
-    - stage: "Prep"
-      name: "Prep"
-      script:
-        - npm install
 
     # runs linting and tests with current locked deps
     - stage: "Tests"
       name: "Tests"
       script:
-        - npm run lint:hbs
-        - npm run lint:js
-        - npm test
+        - yarn lint:hbs
+        - yarn lint:js
+        - yarn test
 
     - stage: "Additional Tests"
       name: "Floating Dependencies"
       install:
-        - npm install --no-package-lock
+        - yarn install --no-package-lock
       script:
-        - npm test
+        - yarn test
 
     # we recommend new addons test the current and previous LTS
     # as well as latest stable release (bonus points to beta/canary)
