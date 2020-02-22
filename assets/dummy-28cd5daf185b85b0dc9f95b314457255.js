@@ -1,0 +1,70 @@
+"use strict"
+define("dummy/app",["exports","ember-resolver","ember-load-initializers","dummy/config/environment"],(function(e,t,r,n){function o(e){return(o="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){return!t||"object"!==o(t)&&"function"!=typeof t?s(e):t}function u(e){return(u=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function s(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+return e}function l(e,t){return(l=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function c(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var f=function(e){function r(){var e,o
+i(this,r)
+for(var l=arguments.length,f=new Array(l),d=0;d<l;d++)f[d]=arguments[d]
+return c(s(o=a(this,(e=u(r)).call.apply(e,[this].concat(f)))),"modulePrefix",n.default.modulePrefix),c(s(o),"podModulePrefix",n.default.podModulePrefix),c(s(o),"Resolver",t.default),o}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function")
+e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&l(e,t)}(r,Ember.Application),r}()
+e.default=f,(0,r.default)(f,n.default.modulePrefix)})),define("dummy/component-managers/glimmer",["exports","@glimmer/component/-private/ember-component-manager"],(function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),Object.defineProperty(e,"default",{enumerable:!0,get:function(){return t.default}})})),define("dummy/components/page-progress",["exports","dummy/templates/components/page-progress"],(function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var r=Ember.Component.extend({layout:t.default,tagName:"",pageProgress:Ember.inject.service(),init:function(){this._super.apply(this,arguments)
+var e=Ember.getProperties(this,"speed","minimum","background")
+Ember.get(this,"pageProgress").setConfig(e)},barStyle:Ember.computed("pageProgress.barStyle",{get:function(){return Ember.String.htmlSafe(Ember.get(this,"pageProgress.barStyle"))}}).readOnly()})
+e.default=r})),define("dummy/initializers/container-debug-adapter",["exports","ember-resolver/resolvers/classic/container-debug-adapter"],(function(e,t){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var r={name:"container-debug-adapter",initialize:function(){var e=arguments[1]||arguments[0]
+e.register("container-debug-adapter:main",t.default),e.inject("container-debug-adapter:main","namespace","application:main")}}
+e.default=r})),define("dummy/initializers/export-application-global",["exports","dummy/config/environment"],(function(e,t){function r(){var e=arguments[1]||arguments[0]
+if(!1!==t.default.exportApplicationGlobal){var r
+if("undefined"!=typeof window)r=window
+else if("undefined"!=typeof global)r=global
+else{if("undefined"==typeof self)return
+r=self}var n,o=t.default.exportApplicationGlobal
+n="string"==typeof o?o:Ember.String.classify(t.default.modulePrefix),r[n]||(r[n]=e,e.reopen({willDestroy:function(){this._super.apply(this,arguments),delete r[n]}}))}}Object.defineProperty(e,"__esModule",{value:!0}),e.initialize=r,e.default=void 0
+var n={name:"export-application-global",initialize:r}
+e.default=n})),define("dummy/router",["exports","dummy/config/environment"],(function(e,t){function r(e){return(r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function n(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function o(e,t){return!t||"object"!==r(t)&&"function"!=typeof t?a(e):t}function i(e){return(i=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function a(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+return e}function u(e,t){return(u=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function s(e,t,r){return t in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var l=function(e){function r(){var e,u
+n(this,r)
+for(var l=arguments.length,c=new Array(l),f=0;f<l;f++)c[f]=arguments[f]
+return s(a(u=o(this,(e=i(r)).call.apply(e,[this].concat(c)))),"location",t.default.locationType),s(a(u),"rootURL",t.default.rootURL),u}return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function")
+e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&u(e,t)}(r,Ember.Router),r}()
+e.default=l,l.map((function(){this.route("introduction"),this.route("documents"),this.route("profile")}))})),define("dummy/routes/application",["exports"],(function(e){var t,r
+function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}function o(e,t,r,n,o,i,a){try{var u=e[i](a),s=u.value}catch(l){return void r(l)}u.done?t(s):Promise.resolve(s).then(n,o)}function i(e,t,r,n){r&&Object.defineProperty(e,t,{enumerable:r.enumerable,configurable:r.configurable,writable:r.writable,value:r.initializer?r.initializer.call(n):void 0})}function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function u(e,t){for(var r=0;r<t.length;r++){var n=t[r]
+n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}function s(e,t){return!t||"object"!==n(t)&&"function"!=typeof t?c(e):t}function l(e){return(l=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function c(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called")
+return e}function f(e,t){return(f=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function d(e,t,r,n,o){var i={}
+return Object.keys(n).forEach((function(e){i[e]=n[e]})),i.enumerable=!!i.enumerable,i.configurable=!!i.configurable,("value"in i||i.initializer)&&(i.writable=!0),i=r.slice().reverse().reduce((function(r,n){return n(e,t,r)||r}),i),o&&void 0!==i.initializer&&(i.value=i.initializer?i.initializer.call(o):void 0,i.initializer=void 0),void 0===i.initializer&&(Object.defineProperty(e,t,i),i=null),i}Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var m=(r=d((t=function(e){function t(){var e,n
+a(this,t)
+for(var o=arguments.length,u=new Array(o),f=0;f<o;f++)u[f]=arguments[f]
+return i(c(n=s(this,(e=l(t)).call.apply(e,[this].concat(u)))),"pageProgress",r,c(n)),n}var n,d,m,p,b
+return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function")
+e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&f(e,t)}(t,Ember.Route),n=t,(d=[{key:"loading",value:(p=regeneratorRuntime.mark((function e(t){var r
+return regeneratorRuntime.wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return(r=Ember.get(this,"pageProgress")).start(t.targetName),t.promise.finally((function(){r.done()})),e.abrupt("return",!0)
+case 4:case"end":return e.stop()}}),e,this)})),b=function(){var e=this,t=arguments
+return new Promise((function(r,n){var i=p.apply(e,t)
+function a(e){o(i,r,n,a,u,"next",e)}function u(e){o(i,r,n,a,u,"throw",e)}a(void 0)}))},function(e){return b.apply(this,arguments)})}])&&u(n.prototype,d),m&&u(n,m),t}()).prototype,"pageProgress",[Ember.inject.service],{configurable:!0,enumerable:!0,writable:!0,initializer:null}),d(t.prototype,"loading",[Ember._action],Object.getOwnPropertyDescriptor(t.prototype,"loading"),t.prototype),t)
+e.default=m})),define("dummy/routes/documents",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.Route.extend({model:function(){return new Ember.RSVP.Promise((function(e){Ember.run.later((function(){e({msg:"Hold Your Horses"})}),1500)}))}})
+e.default=t})),define("dummy/routes/introduction",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.Route.extend({model:function(){return new Ember.RSVP.Promise((function(e){Ember.run.later((function(){e({msg:"Hold Your Horses"})}),1500)}))}})
+e.default=t})),define("dummy/routes/profile",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.Route.extend({model:function(){return new Ember.RSVP.Promise((function(e){Ember.run.later((function(){e({msg:"Hold Your Horses"})}),1500)}))}})
+e.default=t})),define("dummy/services/page-progress",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=[],r=function(e){t.push(e),function e(){var r=t.shift()
+r&&r(e)}()},n=Ember.Service.extend({router:Ember.inject.service(),speed:void 0,minimum:void 0,barStyle:void 0,background:void 0,status:void 0,target:void 0,isLoaded:!1,setConfig:function(e){for(var t=Object.keys(e),r=0;r<t.length;r+=1){var n=e[t[r]]
+void 0!==n&&Ember.set(this,t[r],n)}Ember.set(this,"isLoaded",!0)},start:function(e){Ember.get(this,"isLoaded")&&(this.isStarted()&&Ember.get(this,"target")===e||(this.setStatus(0),Ember.setProperties(this,{barStyle:"transition: none; width: 0;",target:e})),this.update())},update:function(){var e=this,t=Ember.get(this,"speed")||200
+Ember.run.later((function(){e.isStarted()&&(e.trickle(),e.update())}),t)},trickle:function(e){var t=Ember.get(this,"status"),r=e
+return t?t>1?void 0:("number"!=typeof r&&(r=t>=0&&t<.2?.1:t>=.2&&t<.5?.04:t>=.5&&t<.8?.02:t>=.8&&t<.99?.005:0),t=this.clamp(t+r,0,.998),this.setStatus(t)):this.start()},isStarted:function(){return"number"==typeof Ember.get(this,"status")},setStatus:function(e){var t=this,n=Ember.get(this,"speed")||200,o=Ember.get(this,"minimum")||.08,i=Ember.get(this,"background")||"red",a=!this.isStarted(),u=this.clamp(e,o,1)
+Ember.setProperties(this,{status:1===u?void 0:u,barStyle:"transition: width ".concat(n,"ms linear;\nwidth: ").concat(a?"0":this.toBarPerc(Ember.get(this,"status")),"%;\nbackground: ").concat(i)}),r((function(e){1===u?(Ember.set(t,"barStyle","transition: width ".concat(n,"ms linear; width: 100%; background: ").concat(i)),Ember.run.later((function(){Ember.set(t,"barStyle","transition: opacity ".concat(2*n,"ms linear; width: 100%; opacity: 0; background: ").concat(i)),e()}),n)):Ember.run.later(e,n)}))},done:function(){void 0!==Ember.get(this,"status")&&(this.trickle(.3+.5*Math.random()),this.setStatus(1))},clamp:function(e,t,r){return e<t?t:e>r?r:e},toBarPerc:function(e){return 100*e}})
+e.default=n})),define("dummy/templates/application",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.HTMLBars.template({id:"JoJLAi0T",block:'{"symbols":[],"statements":[[5,"page-progress",[],[["@speed","@minimum","@background"],[200,0.1,"green"]]],[0,"\\n\\n"],[7,"h1",true],[8],[0,"Page progress demo"],[9],[0,"\\n\\n"],[7,"h5",true],[8],[0,"Click below links and see the transition effect at the top of the app."],[9],[0,"\\n\\n"],[7,"ul",true],[8],[0,"\\n  "],[7,"li",true],[8],[5,"link-to",[],[["@route"],["introduction"]],{"statements":[[0,"Introduction"]],"parameters":[]}],[9],[0,"\\n  "],[7,"li",true],[8],[5,"link-to",[],[["@route"],["documents"]],{"statements":[[0,"Documents"]],"parameters":[]}],[9],[0,"\\n  "],[7,"li",true],[8],[5,"link-to",[],[["@route"],["profile"]],{"statements":[[0,"Profile"]],"parameters":[]}],[9],[0,"\\n"],[9]],"hasEval":false}',meta:{moduleName:"dummy/templates/application.hbs"}})
+e.default=t})),define("dummy/templates/components/page-progress",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.HTMLBars.template({id:"U7H9zhmY",block:'{"symbols":[],"statements":[[7,"div",true],[10,"class","page-progress"],[8],[0,"\\n  "],[7,"div",true],[10,"class","bar"],[10,"data-test-id","data-test-page-progress-bar"],[11,"style",[22,"barStyle"]],[8],[0,"\\n  "],[9],[0,"\\n"],[9],[0,"\\n"]],"hasEval":false}',meta:{moduleName:"dummy/templates/components/page-progress.hbs"}})
+e.default=t})),define("dummy/templates/documents",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.HTMLBars.template({id:"WWZ1gvmb",block:'{"symbols":[],"statements":[[1,[22,"outlet"],false]],"hasEval":false}',meta:{moduleName:"dummy/templates/documents.hbs"}})
+e.default=t})),define("dummy/templates/introduction",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.HTMLBars.template({id:"jsZa/c03",block:'{"symbols":[],"statements":[[1,[22,"outlet"],false]],"hasEval":false}',meta:{moduleName:"dummy/templates/introduction.hbs"}})
+e.default=t})),define("dummy/templates/profile",["exports"],(function(e){Object.defineProperty(e,"__esModule",{value:!0}),e.default=void 0
+var t=Ember.HTMLBars.template({id:"V7TCDOSn",block:'{"symbols":[],"statements":[[1,[22,"outlet"],false]],"hasEval":false}',meta:{moduleName:"dummy/templates/profile.hbs"}})
+e.default=t})),define("dummy/config/environment",[],(function(){try{var e="dummy/config/environment",t=document.querySelector('meta[name="'+e+'"]').getAttribute("content"),r={default:JSON.parse(decodeURIComponent(t))}
+return Object.defineProperty(r,"__esModule",{value:!0}),r}catch(n){throw new Error('Could not read config from meta tag with name "'+e+'".')}})),runningTests||require("dummy/app").default.create({})
