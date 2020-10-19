@@ -37,14 +37,14 @@ ember install ember-cli-page-progress
 2 steps can make this addon work:
 
 1. Add the component to `application.hbs`
-    ```
+    ```hbs
     <PageProgress />
     ```
 
 2. Import page progress service and add the loading in the application route - `application.js`
    Comparing to v1.3.3, the Mixin is not formally recommended.
 
-   ```
+   ```js
    import { inject as service } from '@ember/service';
    import Route from '@ember/routing/route';
    import { action, get } from '@ember/object';
@@ -81,13 +81,13 @@ ember install ember-cli-page-progress@~1.3.3
 2 steps can make this addon work:
 
 1. Add the component to `application.hbs`
-    ```
+    ```hbs
     {{page-progress}}
     ```
 
 2. Import progress mixin and extend it in the application route - `application.js`
 
-   ```
+   ```js
    import ProgressMixin from './../mixins/progress';
 
    export default Ember.Route.extend(ProgressMixin, {...});
@@ -109,12 +109,12 @@ ember install ember-cli-page-progress@~1.3.3
    For example:
 
    v2.0.0
-   ```
+   ```hbs
    <PageProgress @speed={{300}} />
    ```
 
    v1.3.3
-   ```
+   ```hbs
    {{page-progress speed=300}}
    ```
 
@@ -129,12 +129,12 @@ ember install ember-cli-page-progress@~1.3.3
    For example:
 
    v2.0.0
-   ```
+   ```hbs
    <PageProgress @minimum={{0.1}} />
    ```
 
    v1.3.3
-   ```
+   ```hbs
    {{page-progress minimum=0.1}}
    ```
 
@@ -148,20 +148,20 @@ ember install ember-cli-page-progress@~1.3.3
 
    For example:
    v2.0.0
-   ```
+   ```hbs
    <PageProgress @background={{"green"}} />
    ```
    or
-   ```
+   ```hbs
    <PageProgress @background={{"#29d"}} />
    ```
 
    v1.3.3
-   ```
+   ```hbs
    {{page-progress background="green"}}
    ```
    or
-   ```
+   ```hbs
    {{page-progress background="#29d"}}
    ```
 
